@@ -3,8 +3,8 @@ from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-# "global" vars to the app?
-tasks = []
+# this is a "global" var for ALL users, changed to a session
+# tasks = []
 
 # create a form with one field with the name "task"
 class NewTaskForm(forms.Form):
@@ -13,9 +13,11 @@ class NewTaskForm(forms.Form):
     
 
 # Create your views here.
-def index(request: HttpRequest): 
+def index(request: HttpRequest):
+    if "tasks" not in request.session:
+        request.session["tasks"] = []
     return render(request, "tasks/index.html", {
-        "tasks": tasks
+        "tasks": request.session["tasks"]
     })
 
 def add(request: HttpRequest):
@@ -23,7 +25,8 @@ def add(request: HttpRequest):
         form = NewTaskForm(request.POST)
         if form.is_valid():   #server side validation
             task = form.cleaned_data["task"]
-            tasks.append(task)
+            request.session["tasks"] += [task]
+            
             return HttpResponseRedirect(reverse("tasks:index"))
         else:
             return render(request, "tasks/add.html", {
