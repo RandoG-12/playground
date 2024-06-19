@@ -8,6 +8,9 @@ def index(request):
 def rando(request):
     return HttpResponse("Hello Rando!") 
 
-def greet(request, name):
-    return HttpResponse(f"Hello {name.capitalize()}.") 
+def greet(request, name: str):
+    # third param is a dictionary of values
+    return render(request, "Hello/greet.html", {
+        "name": name.capitalize()
+    })
 
