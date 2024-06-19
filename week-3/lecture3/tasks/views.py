@@ -1,8 +1,14 @@
-# from django.http import HttpResponse
+from django import forms
 from django.shortcuts import render
 
 # "global" vars to the app?
 tasks = ["foo", "bar", "baz"]
+
+# create a form with one field with the name "task"
+class NewTaskForm(forms.Form):
+    task = forms.CharField(label="New Task")
+    priority = forms.IntegerField(label="Priority", min_value=1, max_value=5)
+    
 
 # Create your views here.
 def index(request): 
@@ -11,4 +17,6 @@ def index(request):
     })
 
 def add(request):
-    return render(request, "tasks/add.html")
+    return render(request, "tasks/add.html", {
+        "form": NewTaskForm()
+    })
