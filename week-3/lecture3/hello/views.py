@@ -3,4 +3,11 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello there Bastage!") 
+    return render(request, "hello/index.html") 
+
+def rando(request):
+    return HttpResponse("Hello Rando!") 
+
+def greet(request, name):
+    return HttpResponse(f"Hello {name.capitalize()}.") 
+
