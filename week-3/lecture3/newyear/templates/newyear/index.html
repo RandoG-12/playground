@@ -1,24 +1,16 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Is it New Year's?</title>
+        <link href="{% static 'newyear/styles.css' %}" rel="stylesheet">
     </head>
-    <style>
-        h1 {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-size: 80px;
-            color: blue;
-            position: absolute;
-            margin: 0;
-            top: 40%;
-            right: 40%;
-        }
-    </style>
     <body>
         {% if newyear %}
-            <h1>YES</h1>
+            <h1 class="center-both">YES</h1>
         {% else %}
-            <h1>NO</h1>
+            <h1 class="center-both">NO</h1>
         {% endif %}
     </body>
 </html>
