@@ -1,0 +1,19 @@
+It is quite easy to submit via git, run these commands in sequence:
+
+    git init
+
+    git remote add origin https://github.com/me50/RandoG-12
+
+    git checkout -b <BRANCH_TO_SUBMIT>
+
+    git add .
+
+    git commit -m "random message"
+
+    git push -u origin <BRANCH_TO_SUBMIT>
+
+this should do it... all of the info in <> are either in the HOW TO SUBMIT portion or your me50 repository in github.
+
+Project 0:
+Using Git, push your work to https://github.com/me50/USERNAME.git, where USERNAME is your GitHub username, on a branch called web50/projects/2020/x/search.
+git checkout -b web50/projects/2020/x/search
