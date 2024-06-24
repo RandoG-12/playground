@@ -1,0 +1,11 @@
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 200,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:playground}/week-4/airline/db.sqlite3",
+            "name": "cs50web"
+        }
+    ]
+}
