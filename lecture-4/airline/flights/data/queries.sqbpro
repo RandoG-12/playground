@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:/src-cs50web/projects/commerce/db.sqlite3" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2894"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="0" parent="0"/><expanded_item id="3" parent="0"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="auctions_bid" custom_title="0" dock_id="7" table="4,12:mainauctions_bid"/><dock_state state="000000ff00000000fd0000000100000002000003d300000287fc0100000004fb000000160064006f0063006b00420072006f007700730065003101000000000000025e0000000000000000fb000000160064006f0063006b00420072006f00770073006500350100000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f00770073006500360100000000000003d30000000000000000fb000000160064006f0063006b00420072006f00770073006500370100000000ffffffff0000011e00ffffff000003d30000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">
+insert into flights_airport (code, city) values (&quot;PHL&quot;, &quot;Philadelphia International Airport&quot;)
+
+Select * from flights_airport
+</sql><sql name="SQL 3*">SELECT 
+&quot;auctions_listing&quot;.&quot;id&quot;, &quot;auctions_listing&quot;.&quot;user_id&quot;, &quot;auctions_listing&quot;.&quot;create_time&quot;, 
+&quot;auctions_listing&quot;.&quot;closed_time&quot;, &quot;auctions_listing&quot;.&quot;title&quot;, &quot;auctions_listing&quot;.&quot;description&quot;, 
+&quot;auctions_listing&quot;.&quot;starting_bid&quot;, &quot;auctions_listing&quot;.&quot;image_url&quot;, 
+CAST(MAX(&quot;auctions_bid&quot;.&quot;bid&quot;) AS NUMERIC) AS &quot;max_bid&quot; 
+FROM &quot;auctions_listing&quot; 
+LEFT OUTER JOIN &quot;auctions_bid&quot; 
+ON (&quot;auctions_listing&quot;.&quot;id&quot; = &quot;auctions_bid&quot;.&quot;listing_id&quot;) 
+WHERE &quot;auctions_listing&quot;.&quot;closed_time&quot; IS NULL 
+GROUP BY &quot;auctions_listing&quot;.&quot;id&quot;, &quot;auctions_listing&quot;.&quot;user_id&quot;, &quot;auctions_listing&quot;.&quot;create_time&quot;, &quot;auctions_listing&quot;.&quot;closed_time&quot;, &quot;auctions_listing&quot;.&quot;title&quot;, &quot;auctions_listing&quot;.&quot;description&quot;, &quot;auctions_listing&quot;.&quot;starting_bid&quot;, &quot;auctions_listing&quot;.&quot;image_url&quot;
+</sql><current_tab id="1"/></tab_sql></sqlb_project>
